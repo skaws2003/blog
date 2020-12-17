@@ -24,18 +24,6 @@
     url(KakaoOTF-aLt.otf) format('opentype');
 }
 
-/*
-@font-face {
-    font-family: 'Kakao';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Kakao Bold'), local('KakaoOTF Bold'),
-    url(KakaoOTF-cBd.eot) format('eot'),
-    url(KakaoOTF-cBd.woff2) format('woff2'),
-    url(KakaoOTF-cBd.woff) format('woff'),
-    url(KakaoOTF-cBd.otf) format('opentype');
-}
-*/
 
 /*-------------------------------------------------------*/
 /*
