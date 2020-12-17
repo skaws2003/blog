@@ -1,9 +1,8 @@
 title: Jinwoo Nam
 email: skaws2012@gmail.com
-description: |
-  Jinwoo Nam's blog!
+description: "Jinwoo Nam's blog"
 baseurl: ''
-url: 'https://skaws2003.github.io/blog.github.io/'
+url: 'https://skaws2003.github.io/blog'
 timezone: Asia/Seoul 
 
 repository: skaws2003/blog
