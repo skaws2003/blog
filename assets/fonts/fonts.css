@@ -1,27 +1,25 @@
 /*-------------------------------------------------------*/
 /*
- * Kakao
+ * Kakao - changed to noto sans
  */
 @font-face {
     font-family: 'Kakao';
     font-style: normal;
     font-weight: 400;
-    src: local('Kakao Regular'), local('KakaoOTF Regular'),
-    url(KakaoOTF-bRg.eot) format('eot'),
-    url(KakaoOTF-bRg.woff2) format('woff2'),
-    url(KakaoOTF-bRg.woff) format('woff'),
-    url(KakaoOTF-bRg.otf) format('opentype');
+    src: local('Noto Sans KR Regular'), local('Noto Sans CJK KR Regular'),
+    url(NotoSansKR-Regular.woff2) format('woff2'),
+    url(NotoSansKR-Regular.woff) format('woff'),
+    url(NotoSansKR-Regular.otf) format('opentype');
 }
 
 @font-face {
     font-family: 'Kakao';
     font-style: normal;
     font-weight: 200;
-    src: local('Kakao Light'), local('KakaoOTF Light'),
-    url(KakaoOTF-aLt.eot) format('eot'),
-    url(KakaoOTF-aLt.woff2) format('woff2'),
-    url(KakaoOTF-aLt.woff) format('woff'),
-    url(KakaoOTF-aLt.otf) format('opentype');
+    src: local('Noto Sans KR Light'), local('Noto Sans CJK KR Light'),
+    url(NotoSansKR-Light.woff2) format('woff2'),
+    url(NotoSansKR-Light.woff) format('woff'),
+    url(NotoSansKR-Light.otf) format('opentype');
 }
 
 
