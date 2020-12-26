@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Hello Post!'
-author: jinwoo.nam
+author: Jinwoo Nam
 date: 2020-12-26 12:00
 tags: [helloworld]
 ---
