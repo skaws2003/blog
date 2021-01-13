@@ -2,7 +2,7 @@
 layout: post
 title: 'Image-in-Image Steganography'
 author: Jinwoo Nam
-date: 2020-12-27 15:30
+date: 2019-02-18 22:00
 tags: [Image Security]
 image: /files/covers/security.jpg
 ---

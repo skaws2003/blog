@@ -2,7 +2,7 @@
 layout: post
 title: 'PyTorch-MFCC'
 author: Jinwoo Nam
-date: 2020-12-26 22:00
+date: 2019-08-17 22:00
 tags: [Audio Processing]
 image: /files/covers/mfcc.jpg
 ---
