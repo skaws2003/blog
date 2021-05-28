@@ -5,7 +5,7 @@ baseurl: ''
 url: 'https://skaws2003.github.io'
 timezone: Asia/Seoul 
 
-repository: skaws2003/blog
+repository: skaws2003/skaws2003.github.io
 
 permalink: /:year/:month/:day/:title/
 
