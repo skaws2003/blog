@@ -24,12 +24,11 @@ MFCC는 현재 가장 인기 있는 오디오 특징값 추출 알고리즘입�
 ## Achievements
 * 기존 라이브러리인 [python_speech_features](https://github.com/jameslyons/python_speech_features)와 1e-5 미만의 작은 값 차이만을 보임
 * Fully Differentiable with PyTorch!
-* 2020년 연말 기준 Github Star 21개를 가지고 있음
-    * 이전에는 좀 더 많이 있었으나, TorchAudio에서 MFCC를 지원하기 시작한 이후로 몇 개 빠짐
+* 2021년 2분기 기준 Github Star 26개를 가지고 있음
 
 
 ## Drawbacks
-* 2020년 연말 기준으로는 [TorchAudio](https://pytorch.org/audio/stable/index.html)에서 공식 지원하는 기능임. 따라서 현재는 repo를 더 이상 관리하지 않고 있음
+* 2020년 연말 이후로 [TorchAudio](https://pytorch.org/audio/stable/index.html)에서 공식 지원하는 기능임. 따라서 현재는 archive 상태
 * Numerically unstable할 가능성이 있음
     * Issue로 지적된 부분으로, 중간의 logarithm 부분에 epsilon을 더하지 않은 것이 unstablity를 유발할 가능성이 있음
     * MFCC를 수식 그대로 구현하였기 때문에 생긴 문제로 보임
