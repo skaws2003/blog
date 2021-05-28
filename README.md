@@ -63,7 +63,7 @@ $ open http://localhost:4000
 ### 글쓴이 등록
 
 1. `_authors` 디렉토리에 `이름.md` 이름으로 필자 정보 파일 추가
-  - 참고: 최종적으로 사용자 포스트 목록 페이지의 url은 http://tech.kakao.com/authors/lastname.firstname/
+  - 참고: 최종적으로 사용자 포스트 목록 페이지의 url은 http://skaws2003.github.io/authors/이름/
 2. 파일 상단에 [front matter] 작성
  - layout: author # 레이아웃
  - name: 글쓴이 이름 # post의 author와 똑같게. 왠만하면 특수문자없이 영소문자,숫자,-(하이픈),.(점)...만 사용.
@@ -76,7 +76,7 @@ $ open http://localhost:4000
 ### 태그 등록
 
 1. `_tags` 디렉토리에 `태그이름.md` 이름으로 태그 정보 파일 추가
- - 참고: 최종적으로 사용자 포스트 목록 페이지의 url은 http://tech.kakao.com/tags/tag-name/
+ - 참고: 최종적으로 사용자 포스트 목록 페이지의 url은 http://skaws2003.github.io/tags/태그이름/
 2. 파일 상단에 [front matter] 작성
  - layout: tag # 레이아웃
  - name: `태그이름` # post의 tags 항목과 같게. 왠만하면 특수문자없이 영소문자,숫자,-(하이픈),.(점)...만 사용.
