@@ -24,28 +24,11 @@ Image obfuscation은 이미지 데이터셋을 처리하여 이미지가 다음�
 
 # Approach
 
->많은 디테일이 생략되었으며 웹 상에 공개된 내용만을 적은 점 양해 부탁드립니다.
-
 새로운 방식의 Image Obfuscation은 다음의 아이디어에서 출발하였습니다.
 * 개인정보를 자동적으로 모두 찾는 것은 어렵다. 그냥 이미지 전체를 비식별화 하는 것이 좋다
 * 단순한 방식으로 Image Obfuscation을 하면 원본 이미지가 복원당할 위험성이 있으며, Obfuscated Image의 데이터 활용도를 보존할 수 없다. 따라서 인공신경망을 활용하는 것이 바람직하다
     * Multi-Task Learning을 통해 익명성과 활용도를 모두 학습할 수 있다
     * 인공신경망 아웃풋에서 원본을 복원하는 것은 매우 힘들다. 따라서 원본 이미지가 복원당할 위험성이 매우 적다.
-
-### Training
-
-![Obfuscation Training Procedure](/files/images/obfus/training.jpg)
-
-Obfuscation 모델을 학습하기 위해 Adversarial Training 및 Multi-task learning기법을 사용하였습니다. 먼저 이미지를 익명화하기 위해 Reference Obfuscation(Noise, Jittering 등의 합성)된 이미지를 만들고, 이것을 타겟으로 하여 익명성을 검사하는 Adversarial Training을 합니다. 이 중간에 나오는 Obfuscated Image로 Target Task를 학습하여 데이터의 활용성을 보장하고 이후 Inference 과정에 사용될 신경망을 학습합니다.
-
-이 과정에서 Obfuscator 모델은 인풋 이미지에서 Target Task에 필요한 정보는 남기고 필요없는 정보는 지워서 이미지를 사람이 인식하지 못하는 형태로 바꾸는 법을 학습합니다.
-
-
-### Inference
-
-![Obfuscation Inference Procedure](/files/images/obfus/inference.jpg)
-
-Inference 시에는 앞의 단계에서 활용된 Obfuscator 모델(_O_)와 Target Task 모델(_F_)를 모두 활용합니다. Inference 과정에서 인풋이 들어오면 Trained Obfuscator를 이용하여 이를 먼저 프로세싱한 뒤, 여기서 나온 아웃풋을 Target Task 모델에 인풋으로 넣어 Target Task를 수행합니다.
 
 ### How it Works?
 ![Obfuscation Mapping](/files/images/obfus/scheme.jpg)
@@ -53,21 +36,17 @@ Inference 시에는 앞의 단계에서 활용된 Obfuscator 모델(_O_)와 Targ
 
 그림에서 Obfuscator(_O_)는 회색 영역의 원본 이미지를 노란색 영역으로 매핑하는 역할을 합니다. 그런데 이 Obfuscator는 Target Task의 Decision Boundary를 최대한 유지하도록 학습되었기 때문에 이미지의 형태는 다르게 하면서도(_O_ 매핑) 원본 이미지에 대한 Target Task 모델의 Decision Boundary는 비슷하게 (회색 영역에서 F와 F0 비교) 유지할 수 있습니다.
 
+
 ### Obfuscation for Bigger Image
 
 ![Obfuscation for big image fails](/files/images/obfus/big-fail.jpg)
 
 앒에 설명한 것과 같은 Image Obfuscation은 데이터의 익명성과 활용성이라는 두 가지 목표를 모두 만족시킬 수 있으나, 커다란 이미지에서는 Obfuscator의 학습이 Target Task loss에 좌우되어 Obfuscator가 계속 원본 이미지과 같은 이미지를 만드는 현상이 발생합니다(위의 그림, (a)). 이는 커다란 이미지에서는 가능한 이미지의 경우의 수가 크게 늘어 Adversarial Learning Objective가 크게 어려워지기 때문입니다.
 
-![obfuscation for big image](/files/images/obfus/bigobfus.jpg)
-
-커다란 이미지에서 Obfuscation이 제대로 되지 않는 현상을 완화하기 위해, 여기서는 Pretrained Autoencoder를 사용햐여 Adversarial Learning의 난이도를 낮추도록 하였습니다. 위의 그림과 같이, 여기서는 먼저 (a) 이미지의 크기를 줄이기 위한 autoencoder를 학습시킨 뒤 (b) 앞에서 설명한 obfuscator 학습 과정을 이용하였습니다. 이러한 과정을 통해, 커다란 이미지도 obfuscator 입장에서는 작은 이미지와 똑같이 다룰 수 있게 됩니다.
-
-큰 이미지에서 Inference시에는 학습된 Autoencoder와 obfuscator, target task model을 순차적으로 적용합니다. 
+위와 같은 문제를 해결하기 위해, 저는 Obfuscator의 Feature맵을 이용하는 새로운 obfuscation 방식을 제안해 보고자 하였습니다.
 
 
 # Results
->많은 디테일이 생략되었으며 웹 상에 공개된 내용만을 적은 점 양해 부탁드립니다.
 
 ### Quantitative Results
 제안된 방식의 효율성을 알아보기 위해 Image Classification, Object Detection, Facial Landmar Detection, Face Varification 등의 다양한 문제에 실험을 진행하였습니다.
