@@ -9,11 +9,11 @@ image: /files/covers/obfus.jpg
 
 # Project Description
 
-### Image Obfuscation
+## Image Obfuscation
 
 > [디테일한 내용을 생략하고 후기로 넘어가려면 여기를 클릭](#후기)
 
-> [자세한 내용은 Deeping Source Inc.의 공식 문서를 참조](https://www.deepingsource.io/privacy-protection?lang=ko)
+> [Image Obfuscation에 대해서는 Deeping Source Inc.의 공식 문서를 참조](https://www.deepingsource.io/privacy-protection?lang=ko)
 
 Image obfuscation은 이미지 데이터셋을 처리하여 이미지가 다음의 두 가지 성질을 만족하도록 하는 것입니다.
 * 익명성: 이미지 내부의 개인정보(얼굴 등)은 사람이 알아볼 수 없는 형태로 가공되어야 하며, 제 3자가 원본을 복원할 수도 없어야 합니다.
@@ -30,16 +30,18 @@ Image obfuscation은 이미지 데이터셋을 처리하여 이미지가 다음�
     * Multi-Task Learning을 통해 익명성과 활용도를 모두 학습할 수 있다
     * 인공신경망 아웃풋에서 원본을 복원하는 것은 매우 힘들다. 따라서 원본 이미지가 복원당할 위험성이 매우 적다.
 
-### How it Works?
+
+## How it Works?
 ![Obfuscation Mapping](/files/images/obfus/scheme.jpg)
+
 위 그림은 개발된 Obfuscator 모델이 어떻게 동작하는 지 설명하는 그림입니다. 그림에서 _O_는 Obfuscator 매핑, F는 원본 이미지에 학습된 Target Task 모델의 Decision Boundary, F0는 Obfuscated Image에 학습된 Target Task 모델의 Decision Boundary입니다.
 
 그림에서 Obfuscator(_O_)는 회색 영역의 원본 이미지를 노란색 영역으로 매핑하는 역할을 합니다. 그런데 이 Obfuscator는 Target Task의 Decision Boundary를 최대한 유지하도록 학습되었기 때문에 이미지의 형태는 다르게 하면서도(_O_ 매핑) 원본 이미지에 대한 Target Task 모델의 Decision Boundary는 비슷하게 (회색 영역에서 F와 F0 비교) 유지할 수 있습니다.
 
 
-### Obfuscation for Bigger Image
+## Obfuscation for Larger Image
 
-![Obfuscation for big image fails](/files/images/obfus/big-fail.jpg)
+![Obfuscation for Large image fails](/files/images/obfus/big-fail.jpg)
 
 앒에 설명한 것과 같은 Image Obfuscation은 데이터의 익명성과 활용성이라는 두 가지 목표를 모두 만족시킬 수 있으나, 커다란 이미지에서는 Obfuscator의 학습이 Target Task loss에 좌우되어 Obfuscator가 계속 원본 이미지과 같은 이미지를 만드는 현상이 발생합니다(위의 그림, (a)). 이는 커다란 이미지에서는 가능한 이미지의 경우의 수가 크게 늘어 Adversarial Learning Objective가 크게 어려워지기 때문입니다.
 
@@ -48,14 +50,20 @@ Image obfuscation은 이미지 데이터셋을 처리하여 이미지가 다음�
 
 # Results
 
-### Quantitative Results
+## Quantitative Results
 제안된 방식의 효율성을 알아보기 위해 Image Classification, Object Detection, Facial Landmar Detection, Face Varification 등의 다양한 문제에 실험을 진행하였습니다.
-모든 문제에서 Original Image로 학습한 모델에 비해 0%-1% 이내의 작은 성능 차이만을 보였습니다.
+Ordinary obfuscation은 모든 문제에서 Original Image로 학습한 모델에 비해 0%-1% 이내의 작은 성능 차이만을 보였습니다. Large image의 경우, 2~3% 내외의 성능 하락이 있었습니다.
 
-### Qualitative Results
-![Obfuscation Results](/files/images/obfus/celeba-results.jpg)
-위의 그림은 제안된 Obfuscation 모델의 결과를 보여줍니다. 위에서부터 차례대로 원본 이미지, Reference Obfuscation, 우리 모델의 Obfuscated Image입니다.
-우리 모델의 아웃풋은 원본 이미지와 크게 다르며, 변형 강도는 Reference Obfuscation과도 견줄 수 있습니다.
+## Qualitative Results
+
+### Image Obfuscation
+![Obfuscation Results](/files/images/obfus/small-results.jpg)
+
+### Large Image Obfuscation
+![Obfuscation Results for big images](/files/images/obfus/celeba-results.jpg)
+
+위의 그림은 각각 CIFAR-10 Image, Large Image(CelebA, 256*256)에 대한 Obfuscation 모델의 결과를 보여줍니다. 위쪽은 원본 이미지, 아래쪽은 개발된 모델의 Obfuscated Image입니다.
+개발된 모델 아웃풋은 원본 이미지와 크게 다르며, 변형 강도는 정보를 보존하지 않는 일반 Obfuscation과도 견줄 수 있습니다.
 
 ### Reversibility
 ![Obfuscation Results](/files/images/obfus/celeba-reverse.jpg)
@@ -67,8 +75,10 @@ Image obfuscation은 이미지 데이터셋을 처리하여 이미지가 다음�
 # 후기
 
 * 프로젝트가 한창 진행되던 와중에 중간에 끼어들어 협업에 문제가 있었다
-    * 처음 해보는 팀 작업이었기에 프로젝트 코드의 디자인 패턴을 배우는 데 시간이 걸렸다. 처음 몇 번은 유지 보수가 힘든 코드를 짰으나, 곧 익숙해졌다. 
+    * 처음 해보는 팀 작업이었기에 프로젝트 코드의 디자인 패턴을 배우는 데 시간이 걸렸다. 처음 몇 번은 유지 보수가 힘든 코드를 짰으나, 곧 익숙해졌다.
 
 * 처음 하는 협업이었기에 커뮤니케이션이 중요했다
     * 처음에는 협업 과정에서 아이디어를 전달하는 데 어려움이 있었다. 그러나 차차 당연하지만 중요한 사실들(말보다 그림이 효과적이다, 내가 당연하게 아는 것을 꼭 상대방이 알고 있지는 않다 ...)을 잊고 있었음을 새삼 깨닫게 되어 원만한 아이디어 교환이 가능해졌다.
     * 내가 참여하기 전까지 obfuscation은 1인 프로젝트였고, 항상 인력이 부족하던 상태였기에 새로이 할 실험이 정말 많았다. 이 때문에 처음 프로젝트에 참여하고 며칠 정도는 아예 실험을 전부 멈추고 실험에 대한 검토를 했다.
+
+
