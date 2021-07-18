@@ -68,7 +68,7 @@ image: /files/covers/security.jpg
 
 위의 그림은 프로젝트로 만들어진 모델의 결과물입니다. 위에서부터 차례대로 Cover Image(a), Secret Image(b), Container Image(c), Recovered Image(d)입니다. 
 
-그림에서 보이다시피 Cover(a)에 Secret(b)를 숨겼음에도 둘의 합성 이미지(c)는 Cover(a)와 별다른 차이가 없는 것을 볼 수 있습니다. 마찬가지로 (c)에서 복원된 Recovered Image(d)는 원본 Secret Image(b)와 큰 차이 없는 것을 볼 수 있습니다. 
+그림에서 보이다시피 Cover(a)에 Secret(b)를 숨겼음에도 둘을 합성한 Container Image(c)는 Cover(a)와 별다른 차이가 없는 것을 볼 수 있습니다. 마찬가지로 (c)에서 복원된 Recovered Image(d)는 원본 Secret Image(b)와 큰 차이 없는 것을 볼 수 있습니다. 
 
 더하여, 모든 이미지는 합성된 이후에 각기 다른 수준의 변형을 거쳤으나(Rotation, jpeg compression 등), 결과물의 질은 변형의 강도와 크게 상관없이 좋습니다. 이것은 이전의 모델[2]에서는 불가능했던 것입니다.
 
