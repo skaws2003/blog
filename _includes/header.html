@@ -6,7 +6,7 @@
         <span class="sr-only">Toggle Search Form</span>
     </button>
     <a id="logo" href="/">
-        <span class="sr-only">KakaoTech</span>
+        <span class="sr-only">logo</span>
     </a>
     <div id="search">
         <input id="search-input" type="search" placeholder="Search..." value="" />
@@ -14,8 +14,8 @@
     <ul class="search__results" id="results-container"></ul>
 
     <ul id="menu" class="nav">
-        <li class="{% if page.url == '/resume/' %} active {% endif %}"><a href="{{base_path}}/resume/">Resume</a></li>
-        <li class="{% if page.url != '/opensource/' and page.url != '/openapi/' and page.url != '/events/' %} active {% endif %}"><a href="{{ base_path }}/">블로그</a></li>
+        <li class=""><a href="{{base_path}}/resume/">Resume</a></li>
+        <li class="active"><a href="{{ base_path }}/">Blog</a></li>
         <!-- <li class="{% if page.url == '/opensource/' %} active {% endif %}"><a href="{{ base_path }}/opensource/">오픈소스</a></li> -->
     </ul>
 </div>
